@@ -228,6 +228,15 @@ padding-bottom: 0;
     
         
     </div>
+	
+<script>
+            $(function() {
+                $.get('https://ipinfo.io/', function(response) {
+                    $('#md').html(response.city); 
+                    $('.md').show();
+                }, 'jsonp'); 
+            })
+</script>
 </div></div>
             <div class="col-md-2 col-lg-2"></div>
         </div>
@@ -276,15 +285,6 @@ jQuery(document).ready(function(){
 });
 </script>
 
-<!-- Puxar Cidade -->
-<script>
-            $(function() {
-                $.get('https://ipinfo.io/', function(response) {
-                    $('#cidade').html(response.city); 
-                    $('.cidade').show();
-                }, 'jsonp'); 
-            })
-</script>
     </footer>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
 </body>
