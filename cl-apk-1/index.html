@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no"><title>Mobile App</title><link rel="icon" type="image/png" sizes="512x512" href="assets/img/cd-logo.png"><link rel="icon" type="image/png" sizes="512x512" href="assets/img/cd-logo.png"><link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css"><link rel="manifest" href="manifest.json"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat&amp;display=swap"><link rel="stylesheet" href="assets/css/styles.min.css"><style>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no"><title>Mobile App</title><link rel="icon" type="image/png" sizes="512x512" href="assets/img/cd-logo.png"><link rel="icon" type="image/png" sizes="512x512" href="assets/img/cd-logo.png"><link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat&amp;display=swap"><link rel="stylesheet" href="assets/css/styles.min.css"><style>
     /* estilos existentes */
 
     /* animação da imagem */
@@ -46,7 +46,7 @@
         margin-right: 5px;
         margin-left: 5px;
     }
-</style></div><div style="margin-top: 14px;"><div class="saldo-container">
+</style></div><div class="saldo-container">
   <div class="saldo-texto">
     <h2>Saldo Disponível</h2>
     <p>R$179,52</p>
@@ -65,6 +65,7 @@
   box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.3);
   margin-right: 5px;
   margin-left: 5px;
+  margin-top: 8px;
 }
 
 .saldo-texto {
@@ -94,14 +95,25 @@
   border-radius: 5px;
   cursor: pointer;
   transition: all 0.3s ease;
+  max-width: 100%;
+  width: 80vw;
+  margin: 10px auto;
 }
 
 .botao-solicitar-saque:hover {
   background-color: #3a8a3a;
   color: white;
 }
+    
+ @media (min-width: 768px) {
+  /* estilos para telas maiores, como tablets e desktops */
+  .botao-solicitar-saque {
+    width: auto;
+    margin: 0;
+  }
+}
 
-</style></div><div style="margin-bottom: 13px;padding-right: 32px;padding-left: 32px;margin-top: 46px;"><h4 class="text-center" style="margin-top: 36px;margin-bottom: -40px;color: rgb(106,106,106);">buscando código secreto...</h4><style>
+</style><div style="margin-bottom: 13px;padding-right: 32px;padding-left: 32px;margin-top: 46px;"><h4 class="text-center" style="margin-top: 36px;margin-bottom: -40px;color: rgb(106,106,106);">buscando código secreto...</h4><style>
 /* Estilo para o texto do código */
 #code {
     font-size: 30px;
