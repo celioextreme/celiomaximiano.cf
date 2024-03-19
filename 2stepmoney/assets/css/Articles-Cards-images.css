@@ -17,3 +17,11 @@
   animation: slideIn 0.5s ease;
 }
 
+.navbar {
+  z-index: 100;
+}
+
+.saldodisopnivel {
+  z-index: 200;
+}
+
