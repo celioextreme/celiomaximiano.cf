@@ -1,0 +1,19 @@
+.fit-cover {
+  object-fit: cover;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.animacao-letra {
+  animation: slideIn 0.5s ease;
+}
+

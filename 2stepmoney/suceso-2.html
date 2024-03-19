@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html data-bs-theme="light" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>2StepMoney</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700,900&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,900&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:400,700,900&amp;display=swap">
+    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/animate.min.css">
+    <link rel="stylesheet" href="assets/css/styles.min.css">
+    <link rel="stylesheet" href="assets/css/Articles-Cards-images.css">
+    <link rel="stylesheet" href="assets/css/Bootstrap-Chat.css">
+    <link rel="stylesheet" href="assets/css/Navbar-Centered-Brand-icons.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+<body style="font-family: Montserrat, sans-serif;padding-top: 0px;background: url(&quot;assets/img/fundo%20(2).png&quot;) top / cover no-repeat;">
+    <nav class="navbar navbar-expand-sm d-flex justify-content-center" data-bs-theme="light" style="padding-top: 12px;margin-top: 4px;">
+        <div class="container-fluid"><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1" style="border-style: none;"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-eye-fill" style="font-size: 24px;color: #008ea2;">
+                    <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0"></path>
+                    <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8m8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7"></path>
+                </svg></button>
+            <div class="collapse navbar-collapse" id="navcol-1" style="background: #00a271;padding-top: 8px;padding-bottom: 8px;border-radius: 10px;margin-top: 8px;margin-right: 14px;margin-left: 14px;">
+                <div style="text-align: center;padding-top: 8px;padding-bottom: 8px;">
+                    <h5 style="color: rgb(255,255,255);">Saldo Disponível</h5>
+                    <h1 class="dinheirotopo" style="color: rgb(255,255,255);font-size: 36.18px;"><strong>R$ 0.00</strong></h1><button class="btn btn-primary botao-solicitar-saque" type="button" style="background: rgb(255,255,255);font-weight: bold;color: #00a271;border-style: none;border-radius: 3px;">Solicitar Saque</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="d-flex justify-content-center" style="margin-top: 0px;">
+        <div class="logo" style="text-align: center;">
+            <h1 style="font-family: Poppins, sans-serif;color: #008ea2;font-size: 31.4px;font-weight: bold;">2StepMoney</h1>
+        </div>
+        <div>
+            <h1 style="color: #008f0e;">+R$ 0,00</h1>
+        </div>
+    </div>
+    <div style="text-align: center;">
+        <div class="centro" style="text-align: center;background: #008ea2;border-radius: 5px;width: 85%;padding-top: 60px;padding-bottom: 40px;box-shadow: 0px 0px 6px rgba(33,37,41,0.58);">
+            <div style="text-align: center;"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-currency-dollar bounce animated" style="font-size: 115px;border-radius: 90px;padding: 16px;color: #008ea2;background: #ffffff;margin-bottom: 31px;">
+                    <path d="M4 10.781c.148 1.667 1.513 2.85 3.591 3.003V15h1.043v-1.216c2.27-.179 3.678-1.438 3.678-3.3 0-1.59-.947-2.51-2.956-3.028l-.722-.187V3.467c1.122.11 1.879.714 2.07 1.616h1.47c-.166-1.6-1.54-2.748-3.54-2.875V1H7.591v1.233c-1.939.23-3.27 1.472-3.27 3.156 0 1.454.966 2.483 2.661 2.917l.61.162v4.031c-1.149-.17-1.94-.8-2.131-1.718H4zm3.391-3.836c-1.043-.263-1.6-.825-1.6-1.616 0-.944.704-1.641 1.8-1.828v3.495l-.2-.05zm1.591 1.872c1.287.323 1.852.859 1.852 1.769 0 1.097-.826 1.828-2.2 1.939V8.73l.348.086z"></path>
+                </svg></div>
+            <div>
+                <h5 class="codigoaleartorio" style="color: #ffffff;text-align: center;">Adicione seu código abaixo:</h5><input type="text" style="width: 77%;height: 38px;border-radius: 3px;" placeholder="Digite o código aqui">
+            </div>
+            <div class="codigoautomatico" style="color: rgb(255,255,255);font-weight: bold;font-size: 22px;margin-top: 16px;"><script>
+const CODIGO_TAMANHO = 10;
+const CARACTERES = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+const ELEMENTO_CODIGO = document.querySelector(".codigoautomatico");
+const INTERVALO_TROCA = 200; // Intervalo entre trocas de caracteres
+
+let codigoAtual = gerarCodigoAleatorio();
+exibirCodigo(codigoAtual);
+
+function gerarCodigoAleatorio() {
+  let codigo = "";
+  for (let i = 0; i < CODIGO_TAMANHO; i++) {
+    codigo += CARACTERES[Math.floor(Math.random() * CARACTERES.length)];
+  }
+  return codigo;
+}
+
+function exibirCodigo(codigo) {
+  ELEMENTO_CODIGO.innerHTML = ''; // Limpa o conteúdo atual
+  for (let caractere of codigo) {
+    let div = document.createElement('div');
+    div.textContent = caractere;
+    div.style.display = 'inline-block'; // Garante que os caracteres fiquem na horizontal
+    ELEMENTO_CODIGO.appendChild(div);
+  }
+}
+
+function trocarCodigo() {
+  let novoCodigo = gerarCodigoAleatorio();
+  for (let i = 0; i < CODIGO_TAMANHO; i++) {
+    atualizarCaractere(i, novoCodigo[i]);
+  }
+}
+
+function atualizarCaractere(posicao, novoCaractere) {
+  setTimeout(() => {
+    let elemento = ELEMENTO_CODIGO.children[posicao];
+    elemento.textContent = novoCaractere;
+    elemento.classList.add("animacao-letra");
+    // Remover a classe após a animação para permitir que ela seja reaplicada
+    setTimeout(() => {
+      elemento.classList.remove("animacao-letra");
+    }, 500); // Deve coincidir com a duração da animação
+  }, posicao * INTERVALO_TROCA);
+}
+
+// Inicia a troca automática do código com um intervalo
+setInterval(trocarCodigo, CODIGO_TAMANHO * INTERVALO_TROCA + 1000); // Espera a animação completar antes de reiniciar
+
+exibirCodigo(codigoAtual);
+trocarCodigo();
+</script></div>
+        </div>
+    </div>
+    <div class="text-center" id="botaocolarcodigo"><button class="btn btn-primary" type="button" style="background: #008ea4;color: #ffffff;border-radius: 3px;font-weight: 900;width: 293.578px;height: 46px;border: 2px solid rgb(0,128,128);padding-top: 8px;padding-bottom: 8px;" data-bs-target="#modal-1" data-bs-toggle="modal"><i class="fa fa-caret-right" style="margin-right: 5px;"></i>ADD NOVO CÓDIGO<i class="fa fa-caret-left" style="margin-left: 5px;"></i></button></div>
+    <div class="modal fade" role="dialog" tabindex="-1" id="modal-1">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header" style="border-style: none;border-color: rgb(39,44,50);">
+                    <h4 class="modal-title" style="font-weight: bold;">Verificando o Código</h4><button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body text-center"><span class="spinner-border" role="status" style="width: 100px;height: 100px;margin-top: 20px;"></span>
+                    <p style="margin-top: 14px;font-size: 14px;">Aguarde...</p>
+                </div>
+                <div class="modal-footer" style="border-color: rgb(33,38,42);border-top-color: rgb(33,;border-right-color: 37,;border-bottom-color: 41);border-left-color: 37,;"><button class="btn btn-light" type="button" data-bs-dismiss="modal" style="background: rgb(255,22,7);color: rgb(255,255,255);border-radius: 4px;">Cancelar</button></div><script>
+const modal = document.getElementById("modal-1");
+
+modal.addEventListener("shown.bs.modal", () => {
+  const valor = obterValor(document.querySelector('.dinheirotopo'));
+
+  setTimeout(() => {
+    const urlComParametro = `/sucesso.html?dinheiro=${valor}`;
+    window.location.href = urlComParametro;
+  }, 7000);
+});
+
+// Função para obter o valor do elemento
+function obterValor(obj) {
+  return obj.textContent.replace('R$ ', '').replace(',', '.');
+}
+</script>
+            </div>
+        </div>
+    </div><script>
+document.addEventListener("DOMContentLoaded", function() {
+  // Função para gerar valor aleatório entre 8 e 20 com decimais
+  function gerarValorAleatorio() {
+    let valorMinimo = 8;
+    let valorMaximo = 20;
+    let valorAleatorio = Math.random() * (valorMaximo - valorMinimo) + valorMinimo;
+    return valorAleatorio.toFixed(2); // Retorna o valor com 2 casas decimais
+  }
+
+  // Função para obter o valor do parâmetro 'dinheiro' da URL
+  function obterValorParametro() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const valorParametro = urlParams.get('dinheiro');
+    return valorParametro ? valorParametro.replace(',', '.') : '0'; // Retorna '0' se não houver valor
+  }
+
+  // Função para atualizar o parâmetro 'dinheiro' na URL
+  function atualizarParametroURL(valorFinal) {
+    const url = new URL(window.location);
+    url.searchParams.set('dinheiro', valorFinal);
+    window.history.pushState({}, '', url);
+  }
+
+  // Atualiza os elementos na página e o parâmetro 'dinheiro' na URL
+  function atualizarElementosEParametro() {
+    const valorAleatorio = gerarValorAleatorio();
+    const valorParametro = obterValorParametro();
+    const valorFinal = parseFloat(valorParametro) + parseFloat(valorAleatorio);
+
+    // Atualizar elementos na página
+    document.querySelector('.dinheiroaleartorio').textContent = valorAleatorio;
+    document.querySelector('.dinheirotopo').textContent = valorParametro;
+    document.querySelector('.dinheirofinal').textContent = valorFinal.toFixed(2);
+
+    // Atualizar o parâmetro 'dinheiro' na URL
+    atualizarParametroURL(valorFinal.toFixed(2));
+  }
+
+  // Chama a função para atualizar os elementos e o parâmetro ao carregar a página
+  atualizarElementosEParametro();
+});
+</script>
+    <div id="aparecernoticacao">
+        <div id="notification-wrapper" class="notification-wrapper">
+            <div class="notification"><img src="assets/img/nubank.webp" class="notification-image">
+                <div class="notification-text"><span class="notification-title">Transferência recebida</span><span class="notification-description transferencia">Você recebeu uma transferência de R$2407,02 de App Al-Hilal LTDA</span><script>
+    document.addEventListener('DOMContentLoaded', function() {
+  // Função para obter o valor do parâmetro 'dinheiro' da URL
+  function obterValorDinheiroDaURL() {
+    const params = new URLSearchParams(window.location.search);
+    const valorDinheiro = params.get('dinheiro');
+    return valorDinheiro ? valorDinheiro : '0'; // Retorna '0' se não houver valor
+  }
+
+  // Seleciona o span onde o valor deve ser replicado
+  var spanTransferencia = document.querySelector('span.transferencia');
+
+  // Função para atualizar o span com o valor do parâmetro 'dinheiro'
+  function atualizarSpanTransferencia() {
+    // Pega o valor de 'dinheiro' da URL
+    var valorDinheiro = obterValorDinheiroDaURL();
+
+    // Atualiza o span com o novo valor
+    spanTransferencia.textContent = 'Você recebeu uma transferência de R$ ' + valorDinheiro + ' de 2StepMoney LTDA';
+  }
+
+  // Chama a função para atualizar o span assim que a página carrega
+  atualizarSpanTransferencia();
+});
+</script></div>
+            </div>
+        </div><script>
+  botaoSacar.addEventListener("click", function() {
+    setTimeout(function(){
+      notificationWrapper.style.display = "block";
+    }, 4000); 
+  });
+    
+</script>
+        <div class="modal-saque">
+            <div class="modal-conteudo">
+                <h3 class="h1solicitarsaque" style="font-size: 21.272px;">SOLICITAR SAQUE</h3>
+                <form class="formdopix"><label class="form-label form-label" for="chave-pix">Digite sua chave PIX:</label>
+                    <div><input type="text" id="chave-pix" name="chave-pix" placeholder="Digite seu pix aqui..."></div><button type="button" style="font-size:20px;border-radius:6px;background:#007474;border-style:none;font-weight:bold;padding-top:6px;padding-bottom:6px;padding-right:42px;padding-left:42px;margin-top:4px;color:rgb(255,255,255);" id="botao-sacar">SACAR</button>
+                    <p style="font-size:13px;margin-top:8px;font-style:italic;">Você só pode sacar o valor total</p>
+                </form><span class="close-button" style="border-radius:152px;"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewbox="0 0 24 24" fill="none" style="color:#007474;"><path d="M16.3394 9.32245C16.7434 8.94589 16.7657 8.31312 16.3891 7.90911C16.0126 7.50509 15.3798 7.48283 14.9758 7.85938L12.0497 10.5866L9.32245 7.66048C8.94589 7.25647 8.31312 7.23421 7.90911 7.61076C7.50509 7.98731 7.48283 8.62008 7.85938 9.0241L10.5866 11.9502L7.66048 14.6775C7.25647 15.054 7.23421 15.6868 7.61076 16.0908C7.98731 16.4948 8.62008 16.5171 9.0241 16.1405L11.9502 13.4133L14.6775 16.3394C15.054 16.7434 15.6868 16.7657 16.0908 16.3891C16.4948 16.0126 16.5171 15.3798 16.1405 14.9758L13.4133 12.0497L16.3394 9.32245Z" fill="currentColor"></path><path fill-rule="evenodd" d="M1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12C23 18.0751 18.0751 23 12 23C5.92487 23 1 18.0751 1 12ZM12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12C21 16.9706 16.9706 21 12 21Z" fill="currentColor"></path></svg></span>
+            </div><script>
+    // Função para fechar o modal
+function closeModal() {
+  document.querySelector('.modal-saque').style.display = 'none';
+}
+
+// Adiciona ouvinte de eventos ao botão de fechar
+document.querySelector('.close-button').addEventListener('click', closeModal);
+
+// Adiciona ouvinte de eventos ao fundo do modal (fora do form)
+document.addEventListener('click', function(event) {
+  var modal = document.querySelector('.modal-saque');
+
+  // Fecha o modal se clicar fora do form
+  if (!form.contains(event.target)) {
+    closeModal();
+  }
+});
+
+// Impede que eventos de clique no form fechem o modal
+document.querySelector('.formdopix').addEventListener('click', function(event) {
+  event.stopPropagation();
+});
+</script>
+        </div><script>
+const botaoSolicitarSaque = document.querySelector(".botao-solicitar-saque");
+const modalSaque = document.querySelector(".modal-saque");
+const botaoSacar = document.getElementById("botao-sacar");
+const notificationWrapper = document.querySelector(".notification-wrapper");
+
+botaoSolicitarSaque.addEventListener("click", (event) => {
+  event.preventDefault(); // evita redirecionar a página
+  modalSaque.style.display = "flex";
+});
+
+botaoSacar.addEventListener("click", (event) => {
+  event.preventDefault(); // evita redirecionar a página
+  const chavePix = document.getElementById("chave-pix").value;
+  console.log(`Solicitando saque com a chave PIX ${chavePix}`);
+  // aqui você pode fazer alguma ação, como enviar os dados para o servidor
+  modalSaque.style.display = "none";
+  
+  // Mostra a notificação após 4 segundos
+  setTimeout(function(){
+    notificationWrapper.style.display = "block";
+    
+    // Esconde a notificação após 8 segundos
+    setTimeout(function(){
+      notificationWrapper.style.display = "none";
+    }, 6000);
+  }, 4000);
+});
+    
+function mudarValor() {
+  setTimeout(function() {
+    document.getElementById("saldo-texto").innerHTML = "R$ 0,00";
+  }, 4000);
+}
+</script><script>
+document.addEventListener("DOMContentLoaded", function() {
+  // Seleciona o botão pelo ID
+  var botaoSacar = document.getElementById('botao-sacar');
+
+  // Adiciona um ouvinte de eventos para o clique do botão
+  botaoSacar.addEventListener('click', function() {
+    // Aguarda 3 segundos (3000 milissegundos) antes de executar a função
+    setTimeout(function() {
+      // Seleciona o parágrafo pelo ID
+      var saldoAumentarParagrafo = document.getElementById('saldo-aumentar');
+      // Atualiza o texto do parágrafo
+      saldoAumentarParagrafo.textContent = '0.00';
+    }, 3000); // 3 segundos de atraso
+  });
+});
+</script><style>
+    @keyframes slideOut {
+        from {
+            transform: translateX(0);
+        }
+        to {
+            transform: translateX(-100%);
+        }
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+
+    body {
+        animation: fadeIn 1s ease-out;
+    }
+
+    #notification-wrapper {
+        cursor: pointer;
+    }
+</style>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    var notificationWrapper = document.getElementById('notification-wrapper');
+    if (notificationWrapper) {
+        notificationWrapper.addEventListener('click', function() {
+            // Adiciona a animação ao body
+            document.body.style.animation = "slideOut 0.5s ease-out forwards";
+
+            // Espera a animação terminar para redirecionar
+            setTimeout(function() {
+                // Obtem o valor do parâmetro 'dinheiro' da URL atual
+                const params = new URLSearchParams(window.location.search);
+                const valorDinheiro = params.get('dinheiro'); // 'dinheiro' é o nome do parâmetro
+
+                // Verifica se o valor de 'dinheiro' existe antes de redirecionar
+                if(valorDinheiro !== null) {
+                    window.location.href = "nubank.html?dinheiro=" + valorDinheiro;
+                } else {
+                    // Caso o parâmetro 'dinheiro' não esteja presente na URL, redireciona sem o parâmetro
+                    // ou pode redirecionar para uma URL/página de erro, conforme preferir
+                    window.location.href = "nubank.html";
+                }
+            }, 500); // Ajuste este tempo de acordo com a duração da sua animação
+        });
+    }
+});
+</script>
+    </div>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/bs-init.js"></script>
+</body>
+
+</html>

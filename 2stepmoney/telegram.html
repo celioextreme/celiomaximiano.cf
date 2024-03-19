@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html data-bs-theme="light" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>2StepMoney</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700,900&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,900&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:400,700,900&amp;display=swap">
+    <link rel="stylesheet" href="assets/css/styles.min.css">
+    <link rel="stylesheet" href="assets/css/Articles-Cards-images.css">
+    <link rel="stylesheet" href="assets/css/Bootstrap-Chat.css">
+    <link rel="stylesheet" href="assets/css/Navbar-Centered-Brand-icons.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+<body style="background: url(&quot;assets/img/background%20telegram.jpg&quot;) center / auto;">
+    <div id="top" class="fixed-top" style="padding-top: 12px;padding-bottom: 12px;background: #ffffff;border-bottom-style: solid;border-bottom-color: rgba(33,37,41,0.07);">
+        <div class="d-flex align-items-center" style="padding-left: 10px;padding-right: 10px;display: flex;"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 20 20" fill="none" style="color: rgba(33,37,41,0.58);font-size: 24px;margin-right: 6px;">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M9.70711 16.7071C9.31658 17.0976 8.68342 17.0976 8.29289 16.7071L2.29289 10.7071C1.90237 10.3166 1.90237 9.68342 2.29289 9.29289L8.29289 3.29289C8.68342 2.90237 9.31658 2.90237 9.70711 3.29289C10.0976 3.68342 10.0976 4.31658 9.70711 4.70711L5.41421 9H17C17.5523 9 18 9.44772 18 10C18 10.5523 17.5523 11 17 11L5.41421 11L9.70711 15.2929C10.0976 15.6834 10.0976 16.3166 9.70711 16.7071Z" fill="currentColor"></path>
+            </svg>
+            <div style="margin-top: -5px;margin-left: 4px;"><img class="img-fluid" src="assets/img/pixbt%20(4).png" width="40" height="40" style="border-radius: 33px;"><span style="margin-left: 9px;font-weight: bold;color: rgba(33,37,41,0.73);padding-bottom: 0px;padding-top: 0px;">2StepMoney</span>
+                <div style="margin-top: -18px;font-size: 12px;"><span style="margin-left: 51px;color: rgba(33,37,41,0.41);margin-bottom: 0px;margin-top: 0px;padding-top: 0px;font-size: 13px;">bot</span></div>
+            </div>
+        </div>
+        <div><svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 24 24" width="1em" fill="currentColor" class="direitanatela fixed-right" style="font-size: 29px;color: rgba(33,37,41,0.59);">
+                <path d="M0 0h24v24H0z" fill="none"></path>
+                <path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"></path>
+            </svg></div>
+    </div>
+    <div id="chat-area" style="overflow-y: auto; height: calc(96vh - 10px);">
+        <div></div><script>
+function addMessage(message, code, duration) {
+  const messageElement = document.createElement("div");
+
+  const className = `message-received code-${code} duration-${duration}`;
+  messageElement.className = className;
+
+  // Altera a forma como a mensagem é exibida para incluir o código de forma interativa
+  messageElement.innerHTML = message.replace(
+    `<strong>${code}</strong>`,
+    `<strong class="copyCode" style="cursor: pointer; color: blue;" data-code="${code}">${code}</strong>`
+  ) + ` <i class="copyText" style="cursor: pointer; color: green;" data-code="${code}">copiar código</i>`;
+
+  document.getElementById("chat-area").prepend(messageElement);
+
+  // Cria o botão "Próximo Passo"
+  const nextStepLink = document.createElement("a");
+  nextStepLink.className = "btn btn-primary";
+  nextStepLink.href = "colarcodigo.html";
+  nextStepLink.style =
+    "display: inline-block; width: 100%; background: rgba(0,122,78,0.53); border-style: none; font-weight: bold; margin-top: 12px; text-align: center; color: white; text-decoration: none;";
+  nextStepLink.textContent = "Próximo Passo";
+
+  messageElement.appendChild(nextStepLink);
+}
+
+
+document.getElementById('chat-area').addEventListener('click', function (e) { 
+  if (e.target.classList.contains('copyText')) {
+    const code = e.target.dataset.code;
+    // Verifica se a API de Clipboard está disponível
+    if (navigator.clipboard && typeof navigator.clipboard.writeText === 'function') {
+      navigator.clipboard.writeText(code)
+        .then(() => {
+          alert("Código copiado com sucesso!");
+        })
+        .catch((err) => {
+          console.error("Erro ao copiar o código:", err);
+          // Implemente aqui uma alternativa caso a cópia falhe
+        });
+    } else {
+      // Fallback ou alternativa caso a API de Clipboard não esteja disponível
+      console.log('A API de Clipboard não está disponível neste navegador.');
+      // Você pode implementar aqui um método alternativo de cópia
+      // Por exemplo, usando document.execCommand('copy') com um textarea temporário
+      let textArea = document.createElement("textarea");
+      textArea.value = code;
+      document.body.appendChild(textArea);
+      textArea.focus();
+      textArea.select();
+      try {
+        let successful = document.execCommand('copy');
+        let msg = successful ? 'sucesso' : 'falha';
+        console.log('Fallback: Cópia foi ' + msg);
+        alert("Código copiado com sucesso!");
+      } catch (err) {
+        console.error('Fallback: Erro ao copiar', err);
+      }
+      document.body.removeChild(textArea);
+    }
+  }
+});
+
+
+function generateCode() {
+  const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+  const length = 10;
+  let code = "";
+  for (let i = 0; i < length; i++) {
+    code += characters[Math.floor(Math.random() * characters.length)];
+  }
+  return code;
+}
+
+function generateMessage(code, duration) {
+  return `Você recebeu um código: <strong>${code}</strong>, código válido por <strong>${duration} horas</strong>.`;
+}
+
+function generateRandomMessage() {
+  const code = generateCode();
+  const duration = Math.floor(Math.random() * 20) + 5;
+  const message = generateMessage(code, duration);
+
+  addMessage(message, code, duration);
+
+  const nextInterval = Math.floor(Math.random() * (20 - 5 + 1)) + 5;
+  setTimeout(generateRandomMessage, nextInterval * 1000);
+}
+
+generateRandomMessage();
+</script>
+    </div>
+    <div id="bottom" class="fixed-bottom" style="margin-right: 5px;margin-left: 5px;margin-bottom: 8px;border-radius: 10px;display: flex;">
+        <div style="padding-left: 14px;background: #ffffff;display: flex;border-radius: 10px;width: 90%;">
+            <div style="width: 90%;"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-emoji-smile" style="color: rgba(33,37,41,0.39);font-size: 20px;">
+                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"></path>
+                    <path d="M4.285 9.567a.5.5 0 0 1 .683.183A3.498 3.498 0 0 0 8 11.5a3.498 3.498 0 0 0 3.032-1.75.5.5 0 1 1 .866.5A4.498 4.498 0 0 1 8 12.5a4.498 4.498 0 0 1-3.898-2.25.5.5 0 0 1 .183-.683M7 6.5C7 7.328 6.552 8 6 8s-1-.672-1-1.5S5.448 5 6 5s1 .672 1 1.5m4 0c0 .828-.448 1.5-1 1.5s-1-.672-1-1.5S9.448 5 10 5s1 .672 1 1.5"></path>
+                </svg><input type="text" placeholder="Mensagem" style="border-style: none;border-bottom-style: none;width: 90%;height: 20px;"></div>
+            <div class="d-flex align-items-center" style="background: #ffffff;padding-right: 3px;border-radius: 10px;"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-paperclip" style="font-size: 23px;color: rgba(33,37,41,0.39);transform: rotate(35deg);margin-right: 5px;">
+                    <path d="M4.5 3a2.5 2.5 0 0 1 5 0v9a1.5 1.5 0 0 1-3 0V5a.5.5 0 0 1 1 0v7a.5.5 0 0 0 1 0V3a1.5 1.5 0 1 0-3 0v9a2.5 2.5 0 0 0 5 0V5a.5.5 0 0 1 1 0v7a3.5 3.5 0 1 1-7 0z"></path>
+                </svg></div>
+        </div>
+        <div class="d-flex align-items-center" id="botaoenviar" style="background: #ffffff;text-align: center;margin-left: 10px;border-radius: 89px;padding: 9px;padding-top: 0px;padding-bottom: 0px;padding-right: 12px;padding-left: 12px;"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 20 20" fill="none" style="color: rgba(33,37,41,0.39);">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M7 4C7 2.34315 8.34315 1 10 1C11.6569 1 13 2.34315 13 4V8C13 9.65685 11.6569 11 10 11C8.34315 11 7 9.65685 7 8V4ZM11 14.9291C14.3923 14.4439 17 11.5265 17 8C17 7.44772 16.5523 7 16 7C15.4477 7 15 7.44772 15 8C15 10.7614 12.7614 13 10 13C7.23858 13 5 10.7614 5 8C5 7.44772 4.55228 7 4 7C3.44772 7 3 7.44772 3 8C3 11.5265 5.60771 14.4439 9 14.9291V17H6C5.44772 17 5 17.4477 5 18C5 18.5523 5.44772 19 6 19H14C14.5523 19 15 18.5523 15 18C15 17.4477 14.5523 17 14 17H11V14.9291Z" fill="currentColor"></path>
+            </svg></div>
+    </div>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/bs-init.js"></script>
+</body>
+
+</html>

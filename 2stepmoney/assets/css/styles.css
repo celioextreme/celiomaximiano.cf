@@ -1,0 +1,50 @@
+.centro {
+  position: fixed;
+  left: 50%;
+  bottom: 50%;
+  transform: translate(-50%, 50%);
+}
+
+#codigo-aleatorio {
+  color: rgb(255,15,0);
+  font-size: 28px;
+  font-weight: bold;
+}
+
+#botaocolarcodigo {
+  position: fixed;
+  left: 50%;
+  bottom: 17%;
+  transform: translate(-50%, 50%);
+}
+
+.fixed-right {
+  position: fixed;
+  right: 0;
+  top: 2%;
+}
+
+#chat-area {
+  padding: 20px;
+  flex-direction: column-reverse;
+  display: flex;
+  margin-bottom: 8%;
+}
+
+.message-received {
+  background-color: #ffffff;
+  border-radius: 10px 10px 10px 0px;
+  margin-bottom: 10px;
+  padding: 10px;
+  max-width: 80%;
+}
+
+.message-sent {
+  background-color: #dcf8c6;
+  border-radius: 10px 10px 0px 10px;
+  margin-bottom: 10px;
+  padding: 10px;
+  max-width: 80%;
+  margin-left: auto;
+}
+

