@@ -38,7 +38,7 @@
         </div>
     </div>
     <div style="text-align: center;">
-        <div class="centro" style="text-align: center;background: #008ea2;border-radius: 5px;width: 85%;padding-top: 60px;padding-bottom: 40px;box-shadow: 0px 0px 6px rgba(33,37,41,0.58);">
+        <div class="centro" style="text-align: center;background: #008ea2;border-radius: 5px;width: 88%;padding-top: 40px;padding-bottom: 30px;box-shadow: 0px 0px 6px rgba(33,37,41,0.58);">
             <div style="text-align: center;"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-currency-dollar bounce animated" style="font-size: 115px;border-radius: 90px;padding: 16px;color: #008ea2;background: #ffffff;margin-bottom: 31px;">
                     <path d="M4 10.781c.148 1.667 1.513 2.85 3.591 3.003V15h1.043v-1.216c2.27-.179 3.678-1.438 3.678-3.3 0-1.59-.947-2.51-2.956-3.028l-.722-.187V3.467c1.122.11 1.879.714 2.07 1.616h1.47c-.166-1.6-1.54-2.748-3.54-2.875V1H7.591v1.233c-1.939.23-3.27 1.472-3.27 3.156 0 1.454.966 2.483 2.661 2.917l.61.162v4.031c-1.149-.17-1.94-.8-2.131-1.718H4zm3.391-3.836c-1.043-.263-1.6-.825-1.6-1.616 0-.944.704-1.641 1.8-1.828v3.495l-.2-.05zm1.591 1.872c1.287.323 1.852.859 1.852 1.769 0 1.097-.826 1.828-2.2 1.939V8.73l.348.086z"></path>
                 </svg></div>
@@ -99,7 +99,7 @@ trocarCodigo();
 </script></div>
         </div>
     </div>
-    <div class="text-center" id="botaocolarcodigo"><button class="btn btn-primary" type="button" style="background: #008ea4;color: #ffffff;border-radius: 3px;font-weight: 900;width: 293.578px;height: 46px;border: 2px solid rgb(0,128,128);padding-top: 8px;padding-bottom: 8px;" data-bs-target="#modal-1" data-bs-toggle="modal"><i class="fa fa-caret-right" style="margin-right: 5px;"></i>VERIFICAR CÓDIGO<i class="fa fa-caret-left" style="margin-left: 5px;"></i></button></div>
+    <div class="text-center" id="botaocolarcodigo"><button class="btn btn-primary" type="button" style="background: #008ea4;color: #ffffff;border-radius: 3px;font-weight: 900;width: 304.578px;height: 46px;border: 2px solid rgb(0,128,128);padding-top: 8px;padding-bottom: 8px;" data-bs-target="#modal-1" data-bs-toggle="modal"><i class="fa fa-caret-right" style="margin-right: 5px;"></i>VERIFICAR CÓDIGO<i class="fa fa-caret-left" style="margin-left: 5px;"></i></button></div>
     <div class="modal fade" role="dialog" tabindex="-1" id="modal-1">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
@@ -116,7 +116,7 @@ modal.addEventListener("shown.bs.modal", () => {
   const valor = obterValor(document.querySelector('.dinheirotopo'));
 
   setTimeout(() => {
-    const urlComParametro = `sucesso.html?dinheiro=${valor}`;
+    const urlComParametro = `/sucesso.html?dinheiro=${valor}`;
     window.location.href = urlComParametro;
   }, 7000);
 });
