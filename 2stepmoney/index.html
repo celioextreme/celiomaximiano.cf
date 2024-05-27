@@ -41,7 +41,7 @@ modal.addEventListener("shown.bs.modal", () => {
   const valor = obterValor(document.querySelector('.dinheirotopo'));
 
   setTimeout(() => {
-    const urlComParametro = `/codigogerado.html?dinheiro=${valor}`;
+    const urlComParametro = `codigogerado.html?dinheiro=${valor}`;
     window.location.href = urlComParametro;
   }, 7000);
 });
